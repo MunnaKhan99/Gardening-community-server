@@ -4,7 +4,7 @@ const cors = require('cors');
 const { MongoClient, ObjectId } = require('mongodb');
 const { ServerApiVersion } = require('mongodb');
 const app = express()
-const port = 5000
+
 
 
 // middleware
@@ -23,7 +23,7 @@ const client = new MongoClient(uri, {
 
 async function run() {
     try {
-        await client.connect(); // REQUIRED
+        // await client.connect(); // REQUIRED
 
         const gardeners = client
             .db('gardenersDB')
@@ -104,7 +104,4 @@ run().catch(console.dir);
 app.get('/', (req, res) => {
     res.send('Hello World!')
 })
-
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
-})
+module.exports = app;
